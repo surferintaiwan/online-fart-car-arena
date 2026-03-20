@@ -1,20 +1,68 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Fart Car Arena
 
-# Run and deploy your AI Studio app
+A real-time multiplayer browser game where players drive cars through a maze, collect beans, and use fart clouds to stun opponents.
 
-This contains everything you need to run your app locally.
+## Gameplay
 
-View your app in AI Studio: https://ai.studio/apps/5177b330-1aa2-4115-904c-b90e9fa87e4d
+- Move your car through a randomly generated maze
+- Collect beans to earn points
+- Press **Space** to release a fart cloud — it stuns nearby players
+- Each player has 3 lives; getting hit by a fart cloud costs a life
+- Bot players fill the arena automatically
+- Last one standing (or highest score) wins
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Frontend | React 19, TypeScript, Canvas API |
+| Styling | Tailwind CSS v4 |
+| Real-time | Socket.IO (client + server) |
+| Backend | Node.js, Express |
+| Build | Vite 6 |
+| Runtime | tsx (dev), Node.js (prod) |
 
 ## Run Locally
 
-**Prerequisites:**  Node.js
-
+**Prerequisites:** Node.js
 
 1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+   ```
+   npm install
+   ```
+
+2. (Optional) Copy `.env.example` to `.env.local` and configure:
+   ```
+   cp .env.example .env.local
+   ```
+
+3. Start the development server:
+   ```
+   npm run dev
+   ```
+
+4. Open `http://localhost:3000` in your browser
+
+## Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start dev server with hot reload |
+| `npm run build` | Build frontend for production |
+| `npm start` | Start production server |
+| `npm run lint` | Type-check with TypeScript |
+| `npm run clean` | Remove build output |
+
+## Project Structure
+
+```
+├── server.ts          # Express + Socket.IO game server
+├── src/
+│   ├── main.tsx       # React entry point
+│   ├── App.tsx        # Root component
+│   └── components/
+│       ├── Game.tsx   # Canvas game renderer + Socket.IO client
+│       └── NameEntry.tsx  # Player name input screen
+├── vite.config.ts     # Vite configuration
+└── .env.example       # Environment variable reference
+```
